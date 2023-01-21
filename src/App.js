@@ -1,11 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import VideoEditor from './ViewComponents/VideoEditor';
+import AppHeader from './ViewComponents/AppHeader';
+import LibraryArea from './ViewComponents/LibraryArea';
+import MainContainer from './ViewComponents/MainContainer';
 
 function App() {
   return (
     <div className="App">
-			<VideoEditor/>
+			{/*<AppHeader/>*/}
+			<MainContainer/>
+			{/*<LibraryArea/>*/}
+			{/*<VideoEditor/>*/}
     </div>
   );
 }
