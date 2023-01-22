@@ -5,8 +5,8 @@ function LibraryArea() {
 	const libraryAreaStyle = {
 		width: "300px",
 		height: "100%",
-		display: "flex",
-		justifyContent: "flex-start",
+		//display: "flex",
+		//justifyContent: "flex-start",
 		backgroundColor: "#cccccc"
 	}
 	return(
@@ -14,7 +14,7 @@ function LibraryArea() {
 			id="libraryArea"
 			style={libraryAreaStyle}
 		>
-			{/*<p>ライブラリエリア</p>*/}
+			<p>ライブラリエリア</p>
 		</div>
 	)
 }

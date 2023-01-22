@@ -5,35 +5,39 @@ import useEditorCanvasResize from "../CustamHooks/useEditorCanvasResize";
 function VideoEditorContainer() {
 
 	const vidioEditorContainerStyle = {
-		width: "100%",
-		height: "100%",
-		display: "flex",
+		//display: "flex",
+		//flex: 1,
+		flexGrow: 1,
 		flexFlow: "column",
 		backgroundColor: "#ff7f50",
 		padding: 0,
 		margin: 0,
 		boxSizing: "border-box",
 		flexDirection: "column",
-
-
+		position: "relative",	//リキッド対応
+		height: 0,
+		overflow: "hidden"
 	}
 
-
-	/*const canvasStyle = {
+	const canvasStyle = {
 		width: "100%",
+		height: "100%",
+		maxWidth:"100%",
 		backgroundColor: "#008b8b",
 		boxSizing: "border-box",
 		border: 0,
 
-		boxSizing: "border-box",
+		//キャンバスのリキッド対応
 		flexGrow: 1,
 		margin: 0,
 		padding: 0,
-	
-		position: "relative",
-		height: 0,
-		overflow: "hidden"
-	}*/
+		overflow: "hidden",
+		position: "absolute",
+		left:0,
+		top:0,
+		
+		//boxsizing: content-box;
+	}
 
 	const timeLineStyle = {
 		display: "block",
@@ -54,8 +58,9 @@ function VideoEditorContainer() {
 				width={size.width}
 				height={size.height}
 				options={{ backgroundColor: 0xA2A7B0 }}
+				style={canvasStyle}
 			>
-			</Stage>
+	</Stage>
 			{/*<div
 				id="canvasContainer"
 				style={canvasStyle}

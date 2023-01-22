@@ -7,9 +7,12 @@ function MainContainer() {
 	const mainContainerStyle = {
 		display: "flex",
 		width: "100%",
+		height: "100%",
+		flexGrow: 1,
 		backgroundColor: "#808080",
 		boxSizing: "border-box",
-		flexGrow: 1
+		flexDirection: "row",
+		//flexGrow: 1
 	}
 
 	return(

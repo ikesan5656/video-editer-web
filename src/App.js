@@ -6,7 +6,7 @@ import MainContainer from './ViewComponents/MainContainer';
 function App() {
   return (
     <div className="App">
-			{/*<AppHeader/>*/}
+			<AppHeader/>
 			<MainContainer/>
 			{/*<LibraryArea/>*/}
 			{/*<VideoEditor/>*/}

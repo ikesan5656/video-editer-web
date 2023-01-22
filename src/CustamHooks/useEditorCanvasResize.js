@@ -8,7 +8,15 @@ const useEditorCanvasResize = () => {
 
 		const updateSize = () => {
 			const editorContainer = document.getElementById("vidioEditorContainer");
+
+						//canvasのCSS変更
+						/*const editorCanvas = document.getElementById("vidioEditorCanvas");
+						editorCanvas.style.width = editorContainer.offsetWidth + "px";
+						editorCanvas.style.height = editorContainer.offsetHeight + "px";*/
+
 			setSize({...size, width: editorContainer.offsetWidth, height: editorContainer.offsetHeight});
+
+
 		};
 
 		let timeoutId;
@@ -21,7 +29,7 @@ const useEditorCanvasResize = () => {
 			timeoutId = setTimeout( () => {
 				updateSize();
 				timeoutId = 0;
-			}, 500)
+			}, 100)
 		});
 
 		updateSize();
