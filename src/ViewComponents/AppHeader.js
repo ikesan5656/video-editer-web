@@ -1,6 +1,9 @@
 /*アプリ自体のヘッダー*/
+import VideoEngine from "../Modules/VideoEngine.ts";
 
 function AppHeader() {
+
+	const videoEngine = VideoEngine.getInstance();
 
 	const appHeaderStyle = {
 		width: "100%",
@@ -11,7 +14,11 @@ function AppHeader() {
 	}
 
 	const testClick = () => {
+		videoEngine.startPreviewVideo();
+	}
 
+	const stop = () => {
+		videoEngine.stopPreviewVideo();
 	}
 
 	return(
@@ -21,7 +28,12 @@ function AppHeader() {
 			<button
 				onClick={testClick}
 			>
-				test
+				start
+			</button>
+			<button
+				onClick={stop}
+			>
+				stop
 			</button>
 		</div>
 	)

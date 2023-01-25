@@ -1,6 +1,10 @@
 /*ライブラリエリア*/
 
+import VideoEngine from "../Modules/VideoEngine.ts";
+
 function LibraryArea() {
+	//const videoEngine = VideoEngine.getInstance();
+	//const videoEngine2 = VideoEngine.getInstance();
 
 	const libraryAreaStyle = {
 		width: "300px",
