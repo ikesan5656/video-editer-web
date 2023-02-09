@@ -15,10 +15,17 @@ function AppHeader() {
 
 	const testClick = () => {
 		videoEngine.startPreviewVideo();
+		//VideoEngine.getInstance().addImage(`${process.env.PUBLIC_URL}/logo192.png`);
+		//VideoEngine.getInstance().addCircle();
+		//VideoEngine.getInstance().addVideoEle();
 	}
 
 	const stop = () => {
 		videoEngine.stopPreviewVideo();
+	}
+
+	const play = () => {
+		videoEngine.playVideo();
 	}
 
 	return(
@@ -34,6 +41,11 @@ function AppHeader() {
 				onClick={stop}
 			>
 				stop
+			</button>
+			<button
+				onClick={play}
+			>
+				play
 			</button>
 		</div>
 	)

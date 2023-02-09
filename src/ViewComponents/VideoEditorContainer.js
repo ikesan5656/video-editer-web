@@ -1,6 +1,9 @@
+import { useRef, useEffect } from "react";
 import { Sprite, Stage } from "@inlet/react-pixi";
 import VidioEditorCanvas from "./VideoEditorCanvas";
 import useEditorCanvasResize from "../CustamHooks/useEditorCanvasResize";
+import VideoEngine from "../Modules/VideoEngine.ts";
+import * as PIXI from 'pixi.js';
 
 function VideoEditorContainer() {
 
@@ -15,7 +18,6 @@ function VideoEditorContainer() {
 		boxSizing: "border-box",
 		flexDirection: "column",
 		position: "relative",	//リキッド対応
-		height: 0,
 		overflow: "hidden"
 	}
 
@@ -46,7 +48,20 @@ function VideoEditorContainer() {
 		backgroundColor: "#4682b4"
 	}
 
+	const editorCanvasRef = useRef();	//Pixiキャンバスのref
 	const { size } = useEditorCanvasResize();
+
+	useEffect(() => {
+		console.log(editorCanvasRef);
+		//stageのrefをシングルトンクラスで保有
+		VideoEngine.getInstance().setCanvasRef(editorCanvasRef.current.app.stage);
+		//VideoEngine.getInstance().addImage(`${process.env.PUBLIC_URL}/logo192.png`);
+		//VideoEngine.getInstance().addCircle();
+		VideoEngine.getInstance().addVideoEle();
+
+	
+
+	},[]);
 
 	return(
 		<div 
@@ -59,8 +74,9 @@ function VideoEditorContainer() {
 				height={size.height}
 				options={{ backgroundColor: 0xA2A7B0 }}
 				style={canvasStyle}
+				ref={editorCanvasRef}
 			>
-	</Stage>
+			</Stage>
 			{/*<div
 				id="canvasContainer"
 				style={canvasStyle}
