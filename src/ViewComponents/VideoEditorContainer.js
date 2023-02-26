@@ -1,9 +1,12 @@
+import React from "react";
 import { useRef, useEffect } from "react";
 import { Sprite, Stage } from "@inlet/react-pixi";
 import VidioEditorCanvas from "./VideoEditorCanvas";
 import useEditorCanvasResize from "../CustamHooks/useEditorCanvasResize";
 import VideoEngine from "../Modules/VideoEngine.ts";
 import * as PIXI from 'pixi.js';
+
+import testImage from "../Aseets/logo192.png";
 
 function VideoEditorContainer() {
 
@@ -56,8 +59,11 @@ function VideoEditorContainer() {
 		//stageのrefをシングルトンクラスで保有
 		VideoEngine.getInstance().setCanvasRef(editorCanvasRef.current.app.stage);
 		//VideoEngine.getInstance().addImage(`${process.env.PUBLIC_URL}/logo192.png`);
+		console.log(process.env.PUBLIC_URL);
+		//VideoEngine.getInstance().addImage(testImage);
 		//VideoEngine.getInstance().addCircle();
 		VideoEngine.getInstance().addVideoEle();
+
 
 	
 

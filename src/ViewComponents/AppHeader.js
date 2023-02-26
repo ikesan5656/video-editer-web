@@ -1,5 +1,7 @@
 /*アプリ自体のヘッダー*/
+import React from "react";
 import VideoEngine from "../Modules/VideoEngine.ts";
+import testImage from "../Aseets/logo192.png";
 
 function AppHeader() {
 
@@ -32,6 +34,7 @@ function AppHeader() {
 		<div id="appHeader"
 			style={appHeaderStyle}
 		>
+			<img src={testImage}/>
 			<button
 				onClick={testClick}
 			>

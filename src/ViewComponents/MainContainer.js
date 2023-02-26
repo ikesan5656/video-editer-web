@@ -1,4 +1,5 @@
 /*メインのコンテンツを入れるコンテナ*/
+import React from "react";
 import LibraryArea from "./LibraryArea";
 import VideoEditorContainer from "./VideoEditorContainer";
 

@@ -1,5 +1,5 @@
 /*ライブラリエリア*/
-
+import React from "react";
 import VideoEngine from "../Modules/VideoEngine.ts";
 
 function LibraryArea() {

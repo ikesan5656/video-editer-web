@@ -4,17 +4,18 @@
 import { PixiRef, Sprite, Stage } from "@inlet/react-pixi";
 import * as PIXI from 'pixi.js';
 import { RefObject } from "react";
-
+import testVideo from "../Aseets/free-video1-sea-cafinet.mp4";
+//import testVideo from "../Aseets/free-video1-sea-cafinet.mp4";
 class VideoEngine {
 
 	private static instance: VideoEngine;	//自身のシングルトンインスタンス
 	private time: number = 0;
 	private timeRatio: number = 1;
-	private animationId: number;	// requestAnimationFrameを管理するID
+	private animationId: number = 0;	// requestAnimationFrameを管理するID
 	//private editorCanvasRef?: RefObject<HTMLCanvasElement>;	// キャンバスのRef
-	private videoStage: PIXI.Container;
-	private videoEle: HTMLVideoElement;
-	private videoTexture: PIXI.Sprite;
+	private videoStage?: PIXI.Container;
+	private videoEle?: HTMLVideoElement;
+	private videoTexture?: PIXI.Sprite;
 
 	private targetInterval: number = 1000 / 60;
 	private prevTime: number = Date.now() - this.targetInterval;
@@ -93,8 +94,8 @@ class VideoEngine {
 				//console.log("更新");
 				this.currentTime = Date.now() - this.startTime;
 				//console.log(this.currentTime * 0.001);
-				this.videoEle.currentTime = this.currentTime * 0.001;
-				console.log(this.videoEle.currentTime);
+				this.videoEle!.currentTime = this.currentTime * 0.001;
+				console.log(this.videoEle!.currentTime);
 				//this.videoTexture._texture._frame.x = this.currentTime * 0.001;
 
 				//console.log(this.videoTexture._texture._frame.x);
@@ -136,11 +137,11 @@ class VideoEngine {
 		//imageSprite.anchor.x = 0.5;
 		//imageSprite.anchor.y = 0.5;
 
-		imageSprite.x = this.videoStage.width / 2;
-		imageSprite.y = this.videoStage.height / 2; 
+		imageSprite.x = this.videoStage!.width / 2;
+		imageSprite.y = this.videoStage!.height / 2; 
 
 		//console.log(this.videoStage);
-		this.videoStage.addChild(imageSprite);
+		this.videoStage!.addChild(imageSprite);
 	}
 
 	public addVideo(path: PIXI.SpriteSource, x: number, y: number) {
@@ -154,12 +155,15 @@ class VideoEngine {
 		videoSprite.y = y;//this.videoStage.height / 2;
 
 		this.videoTexture = videoSprite;
-		this.videoStage.addChild(this.videoTexture);
+		this.videoStage!.addChild(this.videoTexture);
 	}
 
 	public addVideoEle() {
+		console.log("test");
+		console.log(testVideo);
 		this.videoEle = document.createElement("video");
-		this.videoEle.src = `${process.env.PUBLIC_URL}/free-video1-sea-cafinet.mp4`; // 動的に生成した動画のURL
+		this.videoEle.src = testVideo; // 動的に生成した動画のURL
+		//this.videoEle.src = `${process.env.PUBLIC_URL}/logo192.png`; // 動的に生成した動画のURL
 		this.videoEle.setAttribute("controls","");
 		//this.videoEle.play();
 		this.videoEle.currentTime = 1;
@@ -174,7 +178,7 @@ class VideoEngine {
 	}
 
 	public playVideo() {
-		this.videoEle.play();
+		this.videoEle!.play();
 	}
 
 	public addCircle() {
@@ -189,7 +193,7 @@ class VideoEngine {
 		ellipse.x = 300;
 		ellipse.y = 300;     
 		ellipse.rotation = Math.PI / 6;
-		this.videoStage.addChild(ellipse);
+		this.videoStage!.addChild(ellipse);
 	}
 
 	// stageのrefをセット

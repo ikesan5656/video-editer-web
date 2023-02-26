@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import AppHeader from './ViewComponents/AppHeader';
 import LibraryArea from './ViewComponents/LibraryArea';
