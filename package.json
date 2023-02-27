@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://ikesan5656.github.io/video-editer-web/",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "tsc": "tsc"
+    "tsc": "tsc",
+	"rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "keywords": [],
   "author": "ikesan",
