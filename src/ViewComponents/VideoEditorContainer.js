@@ -6,7 +6,7 @@ import useEditorCanvasResize from "../CustamHooks/useEditorCanvasResize";
 import VideoEngine from "../Modules/VideoEngine.ts";
 import * as PIXI from 'pixi.js';
 
-import testImage from "../Aseets/logo192.png";
+import testImage from "../aseets/logo192.png";
 
 function VideoEditorContainer() {
 

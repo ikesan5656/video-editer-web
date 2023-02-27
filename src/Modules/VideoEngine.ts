@@ -4,8 +4,8 @@
 import { PixiRef, Sprite, Stage } from "@inlet/react-pixi";
 import * as PIXI from 'pixi.js';
 import { RefObject } from "react";
-import testVideo from "../Aseets/free-video1-sea-cafinet.mp4";
-//import testVideo from "../Aseets/free-video1-sea-cafinet.mp4";
+import testVideo from "../aseets/free-video1-sea-cafinet.mp4";
+//import testVideo from "../aseets/free-video1-sea-cafinet.mp4";
 class VideoEngine {
 
 	private static instance: VideoEngine;	//自身のシングルトンインスタンス
