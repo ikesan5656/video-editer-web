@@ -27,6 +27,7 @@ function AppHeader() {
 	}
 
 	const play = () => {
+		console.log("play");
 		videoEngine.playVideo();
 	}
 
@@ -34,7 +35,7 @@ function AppHeader() {
 		<div id="appHeader"
 			style={appHeaderStyle}
 		>
-			<img src={testImage}/>
+			{/*<img src={testImage}/>*/}
 			<button
 				onClick={testClick}
 			>
