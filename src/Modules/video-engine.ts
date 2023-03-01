@@ -5,6 +5,7 @@ import { PixiRef, Sprite, Stage } from "@inlet/react-pixi";
 import * as PIXI from 'pixi.js';
 import { RefObject } from "react";
 import testVideo from "../aseets/free-video1-sea-cafinet.mp4";
+import VideoMaterial from "./videoMaterial";
 //import testVideo from "../aseets/free-video1-sea-cafinet.mp4";
 class VideoEngine {
 
@@ -27,9 +28,14 @@ class VideoEngine {
 
 	private renderer = PIXI.autoDetectRenderer();
 
+	//private testVideoMaterial: VideoMaterial;
+	
+	private videoMaterials: VideoMaterial[] = [];	//追加されているVideoMaterial
+
 
 	//コンストラクタを外部から作れないように
 	private constructor() {
+		//this.testVideoMaterial = new VideoMaterial();
 		console.log("VideoEngine_create");
 		//this.editorCanvasRef = undefined;
 		//this.stageRef = undefined;
@@ -55,21 +61,11 @@ class VideoEngine {
 		this.time = new Date().getTime();
 	}
 	
-	public tick() {
+	/*public tick() {
 		this.animationId = window.requestAnimationFrame(this.tick.bind(this));
-		// 比較係数を更新
-		//this.updateTimeRatio();
-	
-		//console.log(this.timeRatio);
-	
+
 		console.log("更新");
-	
-		// メッシュを移動
-		//mesh.position.x += 10 * timeRatio;
-	
-		// 描画
-		//renderer.render(scene, camera);
-	}
+	}*/
 
 	public update() {
 		let currentTime = Date.now();
@@ -90,18 +86,14 @@ class VideoEngine {
         }
     }
     if (updated) {
-        //draw();
-				//console.log("更新");
-				this.currentTime = Date.now() - this.startTime;
-				//console.log(this.currentTime * 0.001);
-				this.videoEle!.currentTime = this.currentTime * 0.001;
-				console.log(this.videoEle!.currentTime);
-				//this.videoTexture._texture._frame.x = this.currentTime * 0.001;
 
-				//console.log(this.videoTexture._texture._frame.x);
-				//const container = new PIXI.Container();
-				//this.renderer.render(container);
-				//this.videoStage.render();
+				this.currentTime = Date.now() - this.startTime;
+				console.log(this.currentTime * 0.001);
+
+				if ( this.videoMaterials[0].getIsPlay() == false && this.currentTime * 0.001 >= this.videoMaterials[0].getStartTime() ) {
+					this.videoMaterials[0].play();
+					console.log("再生");
+				}
 
     }
 		this.animationId = requestAnimationFrame(this.update.bind(this));
@@ -122,6 +114,7 @@ class VideoEngine {
 	public stopPreviewVideo() {
 		//requestAnimationFrameを終了
 		window.cancelAnimationFrame(this.animationId);
+		this.videoMaterials[0].pause();
 	}
 
 	//PixiCanvasに動画を追加
@@ -144,41 +137,18 @@ class VideoEngine {
 		this.videoStage!.addChild(imageSprite);
 	}
 
-	public addVideo(path: PIXI.SpriteSource, x: number, y: number) {
-		const videoSprite: PIXI.Sprite = PIXI.Sprite.from(path,{
-			resourceOptions: {
-				autoPlay: false,
-				updateFPS: 60,
-			}
-		});
-		videoSprite.x = x;//this.videoStage.width / 2;
-		videoSprite.y = y;//this.videoStage.height / 2;
 
-		this.videoTexture = videoSprite;
-		this.videoStage!.addChild(this.videoTexture);
-	}
-
-	public addVideoEle() {
-		console.log("test");
-		console.log(testVideo);
-		this.videoEle = document.createElement("video");
-		this.videoEle.src = testVideo; // 動的に生成した動画のURL
-		//this.videoEle.src = `${process.env.PUBLIC_URL}/logo192.png`; // 動的に生成した動画のURL
-		this.videoEle.setAttribute("controls","");
-		//this.videoEle.play();
-		this.videoEle.currentTime = 1;
-		this.videoEle.load();
-		this.addVideo(this.videoEle, 0, 0);
+	// VideoMaterialを生成し、Stageに追加
+	public addVideoMaterial(videoPath: string) {
+		const videoMaterial = new VideoMaterial(videoPath, 0, 0);
 		
-
-		this.videoEle.addEventListener('loadedmetadata', function() {
-			console.log(this.duration);
-			
-		});
+		this.videoMaterials.push(videoMaterial);
+		this.videoStage!.addChild(videoMaterial.getVideoSprite());
 	}
 
 	public playVideo() {
-		this.videoEle!.play();
+		//this.videoEle!.play();
+		this.videoMaterials[0].play();
 	}
 
 	public addCircle() {

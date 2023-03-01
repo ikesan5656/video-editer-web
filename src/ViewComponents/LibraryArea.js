@@ -1,6 +1,6 @@
 /*ライブラリエリア*/
 import React from "react";
-import VideoEngine from "../Modules/VideoEngine.ts";
+import VideoEngine from "../modules/video-engine.ts";
 
 function LibraryArea() {
 	//const videoEngine = VideoEngine.getInstance();

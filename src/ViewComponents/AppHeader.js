@@ -1,6 +1,6 @@
 /*アプリ自体のヘッダー*/
 import React from "react";
-import VideoEngine from "../Modules/VideoEngine.ts";
+import VideoEngine from "../modules/video-engine.ts";
 import testImage from "../aseets/logo192.png";
 
 function AppHeader() {

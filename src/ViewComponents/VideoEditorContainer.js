@@ -3,10 +3,11 @@ import { useRef, useEffect } from "react";
 import { Sprite, Stage } from "@inlet/react-pixi";
 import VidioEditorCanvas from "./VideoEditorCanvas";
 import useEditorCanvasResize from "../CustamHooks/useEditorCanvasResize";
-import VideoEngine from "../Modules/VideoEngine.ts";
+import VideoEngine from "../modules/video-engine.ts";
 import * as PIXI from 'pixi.js';
 
 import testImage from "../aseets/logo192.png";
+import testVideo from "../aseets/free-video1-sea-cafinet.mp4";
 
 function VideoEditorContainer() {
 
@@ -62,7 +63,8 @@ function VideoEditorContainer() {
 		console.log(process.env.PUBLIC_URL);
 		//VideoEngine.getInstance().addImage(testImage);
 		//VideoEngine.getInstance().addCircle();
-		VideoEngine.getInstance().addVideoEle();
+		//VideoEngine.getInstance().addVideoEle();
+		VideoEngine.getInstance().addVideoMaterial(testVideo);
 
 
 	
