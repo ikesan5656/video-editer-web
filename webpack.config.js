@@ -29,7 +29,7 @@ module.exports = {
 							use: ['style-loader', 'css-loader']
 						},
 						{
-							test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|mp4)$/i,
+							test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|mp4|ico|json)$/i,
 							type: 'asset/resource'
 						}
         ]
@@ -48,6 +48,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({ //webpackでbuildされたJSやCSSを表示するHTMLを自動的に生成するplugin
             template: './public/index.html', //テンプレートとして使用するHTMLファイルを指定
+						favicon: './public/favicon.ico',
+						manifest: './public/manifest.json',
             filename: 'index.html' //生成するHTMLファイル名
         }),
 				new webpack.DefinePlugin({
